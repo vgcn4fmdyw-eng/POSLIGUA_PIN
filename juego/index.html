@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tres en Raya - Danna Posligua</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="contenedor">
+
+    <header class="juego-header">
+      <h1>❌ Tres en Raya ⭕</h1>
+      <p class="autor">por Danna Zuleyka Posligua Pin</p>
+    </header>
+
+    <!-- Marcador -->
+    <div class="marcador">
+      <div class="puntaje jugador-x">
+        <span class="simbolo">❌</span>
+        <span class="etiqueta">Jugador X</span>
+        <span class="puntos" id="puntos-x">0</span>
+      </div>
+      <div class="puntaje empates">
+        <span class="simbolo">🤝</span>
+        <span class="etiqueta">Empates</span>
+        <span class="puntos" id="puntos-empate">0</span>
+      </div>
+      <div class="puntaje jugador-o">
+        <span class="simbolo">⭕</span>
+        <span class="etiqueta">Jugador O</span>
+        <span class="puntos" id="puntos-o">0</span>
+      </div>
+    </div>
+
+    <!-- Estado del turno -->
+    <div class="estado" id="estado">Turno de ❌ Jugador X</div>
+
+    <!-- Tablero -->
+    <div class="tablero" id="tablero" role="grid" aria-label="Tablero de juego">
+      <button class="celda" data-index="0" aria-label="Celda 1"></button>
+      <button class="celda" data-index="1" aria-label="Celda 2"></button>
+      <button class="celda" data-index="2" aria-label="Celda 3"></button>
+      <button class="celda" data-index="3" aria-label="Celda 4"></button>
+      <button class="celda" data-index="4" aria-label="Celda 5"></button>
+      <button class="celda" data-index="5" aria-label="Celda 6"></button>
+      <button class="celda" data-index="6" aria-label="Celda 7"></button>
+      <button class="celda" data-index="7" aria-label="Celda 8"></button>
+      <button class="celda" data-index="8" aria-label="Celda 9"></button>
+    </div>
+
+    <!-- Botones de control -->
+    <div class="controles">
+      <button class="btn-reiniciar" id="btn-reiniciar">🔄 Nueva partida</button>
+      <button class="btn-reset" id="btn-reset">🗑️ Reiniciar marcador</button>
+    </div>
+
+    <!-- Modal de resultado -->
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="titulo-resultado">
+      <div class="modal">
+        <div class="emoji-resultado" id="emoji-resultado">🎉</div>
+        <h2 id="titulo-resultado">¡Ganador!</h2>
+        <p  id="texto-resultado">Jugador X ganó la partida</p>
+        <button class="btn-reiniciar" onclick="nuevaPartida()">🔄 Jugar de nuevo</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Interfaces Humano Computador · Docente: Willian Delgado · 2026</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>

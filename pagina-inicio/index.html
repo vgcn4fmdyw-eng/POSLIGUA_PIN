@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Inicio - Danna Posligua</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <div class="avatar">👩‍💻</div>
+        <h1>Hola, soy <span class="nombre">Danna Zuleyka</span></h1>
+        <p class="subtitulo">Estudiante de Tecnologías de la Información</p>
+        <p class="descripcion">Apasionada por el desarrollo web y las interfaces de usuario</p>
+        <a href="#sobre-mi" class="btn-principal">Conóceme más</a>
+      </div>
+    </section>
+
+    <!-- Sección Sobre mí -->
+    <section id="sobre-mi" class="seccion">
+      <h2>Sobre mí</h2>
+      <div class="tarjeta">
+        <p>
+          Me llamo <strong>Danna Zuleyka Posligua Pin</strong>. Soy estudiante
+          comprometida con el aprendizaje continuo, especialmente en el área de
+          desarrollo de software e interfaces digitales. Me encanta crear
+          experiencias visuales agradables e intuitivas para los usuarios.
+        </p>
+        <ul class="lista-info">
+          <li>📚 Asignatura: Interfaces Humano Computador</li>
+          <li>🎓 Docente: Willian Delgado</li>
+          <li>💡 Intereses: Diseño UX/UI, Programación Web</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="seccion seccion-oscura">
+      <h2>Habilidades</h2>
+      <div class="habilidades-grid">
+        <div class="habilidad">
+          <span class="icono">🌐</span>
+          <h3>HTML5</h3>
+          <div class="barra"><div class="progreso" style="width: 85%"></div></div>
+        </div>
+        <div class="habilidad">
+          <span class="icono">🎨</span>
+          <h3>CSS3</h3>
+          <div class="barra"><div class="progreso" style="width: 80%"></div></div>
+        </div>
+        <div class="habilidad">
+          <span class="icono">⚡</span>
+          <h3>JavaScript</h3>
+          <div class="barra"><div class="progreso" style="width: 70%"></div></div>
+        </div>
+        <div class="habilidad">
+          <span class="icono">🖥️</span>
+          <h3>UX / UI</h3>
+          <div class="barra"><div class="progreso" style="width: 75%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="seccion">
+      <h2>Contacto</h2>
+      <div class="tarjeta contacto-card">
+        <p>¿Quieres ponerte en contacto? Escríbeme.</p>
+        <form class="formulario" onsubmit="enviarFormulario(event)">
+          <input type="text" placeholder="Tu nombre" required />
+          <input type="email" placeholder="Tu correo electrónico" required />
+          <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+          <button type="submit" class="btn-principal">Enviar mensaje</button>
+        </form>
+        <p id="mensaje-enviado" class="mensaje-ok" style="display:none;">
+          ✅ ¡Mensaje enviado con éxito!
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Danna Zuleyka Posligua Pin · Interfaces Humano Computador</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+/* ===========================
+   Estilos Globales
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --morado:  #7c3aed;
+  --rosa:    #ec4899;
+  --oscuro:  #1e1b4b;
+  --x-color: #f43f5e;
+  --o-color: #3b82f6;
+  --blanco:  #ffffff;
+  --gris:    #f1f5f9;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--oscuro) 0%, var(--morado) 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===========================
+   Contenedor principal
+   =========================== */
+.contenedor {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+/* ===========================
+   Header
+   =========================== */
+.juego-header {
+  text-align: center;
+  color: var(--blanco);
+}
+
+.juego-header h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.autor {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.3rem;
+}
+
+/* ===========================
+   Marcador
+   =========================== */
+.marcador {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.puntaje {
+  flex: 1;
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 0.9rem 0.5rem;
+  text-align: center;
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.3s;
+}
+
+.puntaje.activo {
+  transform: scale(1.06);
+  background: rgba(255,255,255,0.22);
+}
+
+.puntaje .simbolo   { font-size: 1.4rem; }
+.puntaje .etiqueta  { font-size: 0.72rem; opacity: 0.8; }
+.puntaje .puntos    { font-size: 1.8rem; font-weight: 700; }
+
+/* ===========================
+   Estado / turno
+   =========================== */
+.estado {
+  color: var(--blanco);
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.12);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s;
+}
+
+/* ===========================
+   Tablero
+   =========================== */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.celda {
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.92);
+  border: none;
+  border-radius: 18px;
+  font-size: 3rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.celda:hover:not(:disabled) {
+  transform: scale(1.05);
+  background: var(--blanco);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.celda:disabled {
+  cursor: default;
+}
+
+/* Colores X y O */
+.celda.x { color: var(--x-color); }
+.celda.o { color: var(--o-color); }
+
+/* Celdas ganadoras */
+.celda.ganadora {
+  background: linear-gradient(135deg, #fef08a, #fbbf24);
+  animation: pulso 0.6s ease infinite alternate;
+  box-shadow: 0 0 20px rgba(251,191,36,0.7);
+}
+
+/* ===========================
+   Controles
+   =========================== */
+.controles {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-reiniciar,
+.btn-reset {
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-reiniciar {
+  background: var(--blanco);
+  color: var(--morado);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-reset {
+  background: rgba(255,255,255,0.15);
+  color: var(--blanco);
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+
+.btn-reiniciar:hover,
+.btn-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* ===========================
+   Modal de resultado
+   =========================== */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 75, 0.75);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.overlay.visible {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  background: var(--blanco);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: zoomIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.emoji-resultado { font-size: 3.5rem; }
+
+.modal h2 {
+  font-size: 1.6rem;
+  color: var(--morado);
+}
+
+.modal p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* ===========================
+   Animaciones
+   =========================== */
+@keyframes pulso {
+  from { transform: scale(1);    box-shadow: 0 0 15px rgba(251,191,36,0.5); }
+  to   { transform: scale(1.06); box-shadow: 0 0 30px rgba(251,191,36,0.9); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes aparecer {
+  from { transform: scale(0) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+.celda.animada {
+  animation: aparecer 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 400px) {
+  .juego-header h1 { font-size: 1.6rem; }
+  .celda { font-size: 2.2rem; }
+}

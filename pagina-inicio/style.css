@@ -1,0 +1,306 @@
+/* ===========================
+   Estilos Globales
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --morado:       #7c3aed;
+  --morado-claro: #a78bfa;
+  --rosa:         #ec4899;
+  --oscuro:       #1e1b4b;
+  --gris-claro:   #f5f3ff;
+  --blanco:       #ffffff;
+  --texto:        #374151;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--texto);
+  background: var(--blanco);
+}
+
+/* ===========================
+   Header / Nav
+   =========================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(124, 58, 237, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 1rem 0;
+  gap: 2.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--morado-claro);
+}
+
+/* ===========================
+   Hero
+   =========================== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--oscuro) 0%, var(--morado) 60%, var(--rosa) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+}
+
+.hero-content {
+  color: var(--blanco);
+  animation: fadeInUp 0.9s ease;
+}
+
+.avatar {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.nombre {
+  color: var(--morado-claro);
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+  opacity: 0.9;
+}
+
+.descripcion {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin-bottom: 2rem;
+}
+
+/* ===========================
+   Botón Principal
+   =========================== */
+.btn-principal {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--blanco);
+  color: var(--morado);
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-principal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   Secciones
+   =========================== */
+.seccion {
+  padding: 5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.seccion-oscura {
+  background: var(--gris-claro);
+  max-width: 100%;
+  padding: 5rem 2rem;
+}
+
+.seccion-oscura > h2,
+.seccion-oscura > .habilidades-grid {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--morado);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--rosa);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+/* ===========================
+   Tarjeta
+   =========================== */
+.tarjeta {
+  background: var(--blanco);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+  line-height: 1.8;
+}
+
+.lista-info {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===========================
+   Habilidades
+   =========================== */
+.habilidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.habilidad {
+  background: var(--blanco);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
+  transition: transform 0.3s;
+}
+
+.habilidad:hover {
+  transform: translateY(-5px);
+}
+
+.icono {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.habilidad h3 {
+  margin-bottom: 0.8rem;
+  color: var(--morado);
+}
+
+.barra {
+  background: #e5e7eb;
+  border-radius: 99px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progreso {
+  height: 100%;
+  background: linear-gradient(90deg, var(--morado), var(--rosa));
+  border-radius: 99px;
+  animation: cargarBarra 1.5s ease forwards;
+}
+
+/* ===========================
+   Formulario
+   =========================== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 0.8rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: var(--morado);
+}
+
+.mensaje-ok {
+  margin-top: 1rem;
+  color: #16a34a;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+  background: var(--oscuro);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   Animaciones
+   =========================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes cargarBarra {
+  from { width: 0; }
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 600px) {
+  .hero-content h1 { font-size: 2rem; }
+  nav ul { gap: 1.2rem; }
+}
